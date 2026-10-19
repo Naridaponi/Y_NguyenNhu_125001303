@@ -1,0 +1,1846 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>COSMOS — Khám Phá Vũ Trụ Bao La</title>
+  <meta name="description"
+    content="COSMOS — Khám phá hệ mặt trời, tìm hiểu các hành tinh và những sự thật thú vị về vũ trụ với trải nghiệm tương tác hoàn toàn bằng HTML &amp; CSS.">
+  <meta name="keywords" content="cosmos, solar system, planets, space facts, universe, hệ mặt trời, vũ trụ">
+  <meta name="author" content="Nguyen Nhu Y">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@700;900&family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet">
+
+  <!-- Animate.css -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+
+  <!-- AOS - Animate On Scroll -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css">
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <!-- ============================================
+       COSMIC BACKGROUND: Dynamic Stars, Nebulas & Shooting Stars
+       ============================================ -->
+  <div class="stars-container" aria-hidden="true">
+    <div class="nebula-bg nebula-1"></div>
+    <div class="nebula-bg nebula-2"></div>
+    <div class="nebula-bg nebula-3"></div>
+    <div class="stars stars-sm"></div>
+    <div class="stars stars-md"></div>
+    <div class="stars stars-lg"></div>
+    <div class="stars-bright">
+      <span class="cross-star cs1"></span>
+      <span class="cross-star cs2"></span>
+      <span class="cross-star cs3"></span>
+      <span class="cross-star cs4"></span>
+      <span class="cross-star cs5"></span>
+      <span class="cross-star cs6"></span>
+      <span class="cross-star cs7"></span>
+      <span class="cross-star cs8"></span>
+    </div>
+    <div class="shooting-star shooting-star-1"></div>
+    <div class="shooting-star shooting-star-2"></div>
+    <div class="shooting-star shooting-star-3"></div>
+    <div class="shooting-star shooting-star-4"></div>
+  </div>
+
+  <!-- Hidden checkbox for Skip Intro (Pure CSS Control) -->
+  <input type="checkbox" id="skip-intro" class="sr-only" aria-label="Bỏ qua màn hình mở đầu">
+
+  <!-- ============================================
+       INTRO PRELOADER: Spaceship & Loading Bar (100% Pure CSS)
+       ============================================ -->
+  <section id="intro-loader" class="intro-loader" aria-label="Màn hình mở đầu vũ trụ">
+    <!-- Hyperdrive Warp Stars Layer -->
+    <div class="intro-stars-layer" aria-hidden="true">
+      <span class="warp-streak s1"></span>
+      <span class="warp-streak s2"></span>
+      <span class="warp-streak s3"></span>
+      <span class="warp-streak s4"></span>
+      <span class="warp-streak s5"></span>
+      <span class="warp-streak s6"></span>
+    </div>
+
+    <!-- Spaceship Flying Across Screen -->
+    <div class="intro-spaceship-wrapper" aria-hidden="true">
+      <div class="spaceship-box">
+        <div class="spaceship-trail"></div>
+        <svg class="spaceship-svg" viewBox="0 0 200 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="shipBodyGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#14193d" />
+              <stop offset="50%" stop-color="#2a3575" />
+              <stop offset="90%" stop-color="#7280e6" />
+              <stop offset="100%" stop-color="#e8ebff" />
+            </linearGradient>
+            <linearGradient id="shipWingGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#0f1435" />
+              <stop offset="100%" stop-color="#222b68" />
+            </linearGradient>
+            <linearGradient id="shipFlameGrad" x1="100%" y1="50%" x2="0%" y2="50%">
+              <stop offset="0%" stop-color="#00d4ff" />
+              <stop offset="35%" stop-color="#6c63ff" />
+              <stop offset="75%" stop-color="#ff00aa" />
+              <stop offset="100%" stop-color="transparent" />
+            </linearGradient>
+            <linearGradient id="shipCoreFlame" x1="100%" y1="50%" x2="0%" y2="50%">
+              <stop offset="0%" stop-color="#ffffff" />
+              <stop offset="60%" stop-color="#00d4ff" />
+              <stop offset="100%" stop-color="transparent" />
+            </linearGradient>
+          </defs>
+
+          <!-- Flame Plume -->
+          <polygon points="45,45 5,34 5,56" fill="url(#shipFlameGrad)" class="spaceship-flame" />
+          <polygon points="45,45 20,40 20,50" fill="url(#shipCoreFlame)" class="spaceship-flame-core" />
+
+          <!-- Top Wing -->
+          <polygon points="90,38 48,10 105,35" fill="url(#shipWingGrad)" stroke="#6c63ff" stroke-width="1.5" />
+          <line x1="52" y1="12" x2="102" y2="34" stroke="#00d4ff" stroke-width="2" />
+
+          <!-- Bottom Wing -->
+          <polygon points="90,52 48,80 105,55" fill="url(#shipWingGrad)" stroke="#6c63ff" stroke-width="1.5" />
+          <line x1="52" y1="78" x2="102" y2="56" stroke="#00d4ff" stroke-width="2" />
+
+          <!-- Main Fuselage -->
+          <path d="M42,45 L70,30 L160,42 L185,45 L160,48 L70,60 Z" fill="url(#shipBodyGrad)" stroke="#00d4ff"
+            stroke-width="1.5" />
+
+          <!-- Cockpit Glass Canopy -->
+          <path d="M120,41 L145,43 L158,45 L145,47 L120,49 Z" fill="#00d4ff" opacity="0.9" />
+
+          <!-- Tech Panel Accents -->
+          <circle cx="85" cy="45" r="4" fill="#6c63ff" />
+          <line x1="100" y1="38" x2="100" y2="52" stroke="#00d4ff" stroke-width="1.5" stroke-dasharray="2 2" />
+        </svg>
+      </div>
+    </div>
+
+    <!-- Center HUD Loading Info -->
+    <div class="intro-hud">
+      <div class="intro-badge">
+        <span class="badge-dot"></span>
+        <span class="badge-text">COSMOS MISSION 2026</span>
+      </div>
+      <h2 class="intro-title">COSMOS</h2>
+      <p class="intro-status">ĐANG KHỞI TẠO TÀU KHÁM PHÁ &amp; HỆ THỐNG VŨ TRỤ...</p>
+
+      <!-- Loading Progress Bar -->
+      <div class="intro-progress-box">
+        <div class="intro-progress-track">
+          <div class="intro-progress-fill"></div>
+        </div>
+        <div class="intro-progress-stats">
+          <span class="intro-progress-text">WARP DRIVE ENGINE</span>
+          <span class="intro-progress-percent">100% READY</span>
+        </div>
+      </div>
+
+      <!-- Quick Skip Button -->
+      <label for="skip-intro" class="intro-skip-btn" tabindex="0" role="button">Bỏ qua mở đầu ↷</label>
+    </div>
+  </section>
+
+  <!-- ============================================
+       BACKGROUND: Stars & Shooting Stars (Trang trí)
+       ============================================ -->
+  <div class="stars-container" aria-hidden="true">
+    <div class="stars stars-sm"></div>
+    <div class="stars stars-md"></div>
+    <div class="stars stars-lg"></div>
+    <div class="shooting-star shooting-star-1"></div>
+    <div class="shooting-star shooting-star-2"></div>
+    <div class="shooting-star shooting-star-3"></div>
+  </div>
+
+  <!-- ============================================
+       HEADER & NAVIGATION (Semantic HTML5)
+       ============================================ -->
+  <header class="main-header" id="top">
+    <a href="#home" class="logo">
+      <span class="logo-icon">✦</span>
+      <span class="logo-text">COSMOS</span>
+    </a>
+    <nav class="main-nav" aria-label="Điều hướng chính">
+      <ul class="nav-list">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#solar-system" class="nav-link">Solar System</a></li>
+        <li><a href="#sun-showcase" class="nav-link">Mặt Trời</a></li>
+        <li><a href="#planets" class="nav-link">Planets</a></li>
+        <li><a href="#comparison" class="nav-link">So Sánh</a></li>
+        <li><a href="#spotlight" class="nav-link">Spotlight</a></li>
+        <li><a href="#moon-phases" class="nav-link">Mặt Trăng</a></li>
+        <li><a href="#missions" class="nav-link">Sứ Mệnh</a></li>
+        <li><a href="#facts" class="nav-link">Space Facts</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ============================================
+       MAIN CONTENT (Semantic HTML5 <main>)
+       ============================================ -->
+  <main id="main-content">
+
+    <!-- ── 1. HERO SECTION ── -->
+    <section id="home" class="hero-section">
+      <section class="hero-content">
+        <p class="hero-tagline animate__animated animate__fadeInDown">✦ EXPLORE THE UNIVERSE ✦</p>
+        <h1 class="hero-title">COSMOS</h1>
+        <p class="hero-subtitle">
+          Hành trình khám phá vũ trụ bao la — từ Mặt Trời rực cháy đến những hành tinh xa xôi nhất trong hệ Mặt Trời.
+        </p>
+        <a href="#solar-system" class="cta-btn animate__animated animate__fadeInUp">
+          <span>Bắt Đầu Khám Phá</span>
+          <span class="cta-arrow">→</span>
+        </a>
+      </section>
+      <section class="hero-scroll-indicator" aria-hidden="true">
+        <span class="scroll-text">Cuộn xuống</span>
+        <span class="scroll-arrow">⌄</span>
+      </section>
+    </section>
+
+    <!-- ── 2. SOLAR SYSTEM SECTION ── -->
+    <section id="solar-system" class="solar-system-section">
+
+      <!-- Hidden inputs for CSS-only interactive controls -->
+      <input type="checkbox" id="pause-toggle" class="sr-only" aria-label="Tạm dừng hoặc tiếp tục chuyển động">
+      <input type="radio" name="orbit-speed" id="speed-slow" class="sr-only" aria-label="Tốc độ chậm">
+      <input type="radio" name="orbit-speed" id="speed-normal" class="sr-only" checked aria-label="Tốc độ chuẩn">
+      <input type="radio" name="orbit-speed" id="speed-fast" class="sr-only" aria-label="Tốc độ nhanh">
+
+      <h2 class="section-title" data-aos="fade-up">
+        <span class="section-icon">☀️</span> Solar System
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Nhấn vào hành tinh hoặc Mặt Trời để xem thông tin chi tiết • Sử dụng bảng điều khiển bên dưới để tương tác
+      </p>
+
+      <!-- Interactive Controls Panel -->
+      <section class="controls-panel" data-aos="fade-up" data-aos-delay="200" aria-label="Bảng điều khiển hệ Mặt Trời">
+        <label for="pause-toggle" class="control-btn pause-btn" tabindex="0">
+          <span class="pause-icon">⏸</span>
+          <span class="pause-label">Tạm dừng</span>
+          <span class="play-icon">▶</span>
+          <span class="play-label">Tiếp tục</span>
+        </label>
+        <section class="speed-controls" aria-label="Điều chỉnh tốc độ quỹ đạo">
+          <span class="speed-label">Tốc độ:</span>
+          <label for="speed-slow" class="control-btn speed-btn speed-btn-slow" tabindex="0">0.5×</label>
+          <label for="speed-normal" class="control-btn speed-btn speed-btn-normal" tabindex="0">1×</label>
+          <label for="speed-fast" class="control-btn speed-btn speed-btn-fast" tabindex="0">2×</label>
+        </section>
+      </section>
+
+      <!-- Solar System Visualization -->
+      <section class="solar-system-container" data-aos="zoom-in" data-aos-delay="300"
+        aria-label="Mô phỏng quỹ đạo các hành tinh">
+        <!-- Sun (Interactive with Coronal Flares and Link to Details) -->
+        <a href="#sun-showcase" class="sun" title="Mặt Trời (The Sun) — Nhấn để xem hồ sơ chuyên sâu">
+          <div class="sun-corona"></div>
+          <div class="sun-flares"></div>
+          <div class="sun-core"></div>
+          <span class="sun-pulse-ring"></span>
+          <span class="sun-name-tag">Mặt Trời (The Sun)</span>
+        </a>
+
+        <!-- Orbit Lines -->
+        <div class="orbit-line orbit-line-1"></div>
+        <div class="orbit-line orbit-line-2"></div>
+        <div class="orbit-line orbit-line-3"></div>
+        <div class="orbit-line orbit-line-4"></div>
+        <div class="orbit-line orbit-line-5"></div>
+        <div class="orbit-line orbit-line-6"></div>
+        <div class="orbit-line orbit-line-7"></div>
+        <div class="orbit-line orbit-line-8"></div>
+
+        <!-- Orbiting Planets -->
+        <a href="#mercury-detail" class="planet-link mercury-link" title="Mercury — Nhấn để xem chi tiết">
+          <span class="planet mercury"></span>
+          <span class="planet-name-tag">Mercury</span>
+        </a>
+
+        <a href="#venus-detail" class="planet-link venus-link" title="Venus — Nhấn để xem chi tiết">
+          <span class="planet venus"></span>
+          <span class="planet-name-tag">Venus</span>
+        </a>
+
+        <a href="#earth-detail" class="planet-link earth-link" title="Earth — Nhấn để xem chi tiết">
+          <span class="planet earth"></span>
+          <span class="planet-name-tag">Earth</span>
+        </a>
+
+        <a href="#mars-detail" class="planet-link mars-link" title="Mars — Nhấn để xem chi tiết">
+          <span class="planet mars"></span>
+          <span class="planet-name-tag">Mars</span>
+        </a>
+
+        <a href="#jupiter-detail" class="planet-link jupiter-link" title="Jupiter — Nhấn để xem chi tiết">
+          <span class="planet jupiter"></span>
+          <span class="planet-name-tag">Jupiter</span>
+        </a>
+
+        <a href="#saturn-detail" class="planet-link saturn-link" title="Saturn — Nhấn để xem chi tiết">
+          <span class="planet saturn"></span>
+          <span class="saturn-ring-visual"></span>
+          <span class="planet-name-tag">Saturn</span>
+        </a>
+
+        <a href="#uranus-detail" class="planet-link uranus-link" title="Uranus — Nhấn để xem chi tiết">
+          <span class="planet uranus"></span>
+          <span class="planet-name-tag">Uranus</span>
+        </a>
+
+        <a href="#neptune-detail" class="planet-link neptune-link" title="Neptune — Nhấn để xem chi tiết">
+          <span class="planet neptune"></span>
+          <span class="planet-name-tag">Neptune</span>
+        </a>
+      </section>
+    </section>
+
+    <!-- ── 3. PLANET EXPLORE SECTION ── -->
+    <section id="planets" class="planet-explore-section">
+      <h2 class="section-title" data-aos="fade-up">
+        <span class="section-icon">🔭</span> Planet Explore
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Di chuột qua thẻ hành tinh để khám phá những thông tin thú vị
+      </p>
+
+      <!-- ── THE SUN FEATURE SHOWCASE ── -->
+      <section id="sun-showcase" class="sun-showcase-container" data-aos="fade-up"
+        aria-label="Khám phá Mặt Trời — Trái tim Hệ Mặt Trời">
+        <div class="sun-showcase-glow" aria-hidden="true"></div>
+        <div class="sun-showcase-inner">
+
+          <!-- Left: 3D Sun Sphere & Corona Animation -->
+          <div class="sun-visual-column">
+            <div class="sun-visual-stage">
+              <div class="sun-corona-halo"></div>
+              <div class="sun-flare-ring r1"></div>
+              <div class="sun-flare-ring r2"></div>
+              <div class="sun-prominence p1"></div>
+              <div class="sun-prominence p2"></div>
+              <div class="sun-prominence p3"></div>
+              <div class="sun-sphere-box">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg/600px-The_Sun_by_the_Atmospheric_Imaging_Assembly_of_NASA%27s_Solar_Dynamics_Observatory_-_20100819.jpg"
+                  alt="Mặt Trời - Solar Dynamics Observatory NASA" class="sun-real-img" loading="lazy">
+                <div class="sun-sphere-overlay"></div>
+              </div>
+              <span class="sun-badge-orbit">Quang Cầu: ~5.500°C</span>
+            </div>
+          </div>
+
+          <!-- Right: Comprehensive Sun Information -->
+          <div class="sun-info-column">
+            <header class="sun-info-header">
+              <span class="sun-type-badge">☀️ Ngôi Sao Trung Tâm • Phổ G2V • 4,6 Tỷ Năm Tuổi</span>
+              <h3 class="sun-showcase-title">Mặt Trời — The Sun</h3>
+              <p class="sun-showcase-tagline">Trái tim năng lượng rực cháy và cội nguồn sự sống của Hệ Thái Dương</p>
+            </header>
+
+            <p class="sun-summary-text">
+              Mặt Trời là ngôi sao lùn vàng nằm ở trung tâm Hệ Mặt Trời, chiếm tới <strong>99,86%</strong> tổng khối
+              lượng của toàn bộ hệ. Trọng trường khổng lồ của Mặt Trời níu giữ 8 hành tinh cùng hàng triệu tiểu hành
+              tinh trong quỹ đạo ổn định. Ánh sáng từ Mặt Trời mất <strong>8 phút 20 giây</strong> để vượt qua 150 triệu
+              km truyền năng lượng và sự sống đến Trái Đất.
+            </p>
+
+            <!-- Key Sun Metrics Grid -->
+            <div class="sun-metrics-grid">
+              <div class="sun-metric-card">
+                <span class="metric-icon">📏</span>
+                <div class="metric-body">
+                  <span class="sun-metric-val">1.392.700 km</span>
+                  <span class="sun-metric-lbl">Đường kính (~109× Trái Đất)</span>
+                </div>
+              </div>
+
+              <div class="sun-metric-card">
+                <span class="metric-icon">⚖️</span>
+                <div class="metric-body">
+                  <span class="sun-metric-val">1,989 × 10³⁰ kg</span>
+                  <span class="sun-metric-lbl">Khối lượng (99,86% Hệ Mặt Trời)</span>
+                </div>
+              </div>
+
+              <div class="sun-metric-card">
+                <span class="metric-icon">🔥</span>
+                <div class="metric-body">
+                  <span class="sun-metric-val">15.000.000°C</span>
+                  <span class="sun-metric-lbl">Nhiệt độ Lõi nhiệt hạch</span>
+                </div>
+              </div>
+
+              <div class="sun-metric-card">
+                <span class="metric-icon">⚡</span>
+                <div class="metric-body">
+                  <span class="sun-metric-val">600 triệu tấn/s</span>
+                  <span class="sun-metric-lbl">Hydro tổng hợp thành Heli</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Deep Dive Highlights -->
+            <div class="sun-deep-features">
+              <div class="sun-feat-item">
+                <span class="feat-bullet">⚛️</span>
+                <div class="feat-text">
+                  <strong>Phản ứng Nhiệt Hạch (Nuclear Fusion):</strong> Tại vùng lõi với áp suất 250 tỷ atm, 600 triệu
+                  tấn hydro hợp hạch thành heli mỗi giây, giải phóng năng lượng tương đương 100 tỷ quả bom khinh khí.
+                </div>
+              </div>
+              <div class="sun-feat-item">
+                <span class="feat-bullet">🌪️</span>
+                <div class="feat-text">
+                  <strong>Nhật Hoa &amp; Bão Từ (Coronal Mass Ejections):</strong> Khí quyển ngoài cực nóng (1–3 triệu
+                  °C) thường xuyên phun trào các luồng plasma mang từ tính cực mạnh vào không gian liên hành tinh.
+                </div>
+              </div>
+              <div class="sun-feat-item">
+                <span class="feat-bullet">🌌</span>
+                <div class="feat-text">
+                  <strong>Gió Mặt Trời &amp; Cực Quang (Aurora):</strong> Luồng hạt mang điện tích thổi qua vũ trụ với
+                  vận tốc 400–800 km/s. Khi chạm vào từ quyển Trái Đất, chúng thắp sáng những dải Cực quang lộng lẫy
+                  trên bầu trời đêm.
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- ── 8 PLANETS GRID ── -->
+      <section class="planet-grid" aria-label="Danh sách các hành tinh">
+
+        <!-- Mercury Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="100">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual mercury-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/600px-Mercury_in_color_-_Prockter07-edit1.jpg"
+                  alt="Sao Thủy - Mercury" class="planet-card-img" loading="lazy">
+              </div>
+              <h3 class="card-planet-name">Mercury</h3>
+              <p class="card-planet-type">Hành tinh đất đá</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Mercury — Sao Thủy</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 4.879 km</li>
+                <li><strong>Khoảng cách:</strong> 57,9 triệu km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 88 ngày</li>
+                <li><strong>Nhiệt độ:</strong> −180°C → 430°C</li>
+              </ul>
+              <p class="card-fun-fact">🌟 Hành tinh nhỏ nhất và gần Mặt Trời nhất trong Hệ Mặt Trời.</p>
+            </section>
+          </section>
+        </article>
+
+        <!-- Venus Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="200">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual venus-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/600px-Venus-real_color.jpg"
+                  alt="Sao Kim - Venus" class="planet-card-img" loading="lazy">
+              </div>
+              <h3 class="card-planet-name">Venus</h3>
+              <p class="card-planet-type">Hành tinh đất đá</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Venus — Sao Kim</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 12.104 km</li>
+                <li><strong>Khoảng cách:</strong> 108,2 triệu km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 225 ngày</li>
+                <li><strong>Nhiệt độ:</strong> 462°C (TB)</li>
+              </ul>
+              <p class="card-fun-fact">🔥 Hành tinh nóng nhất do hiệu ứng nhà kính cực mạnh từ khí CO₂ dày đặc!</p>
+            </section>
+          </section>
+        </article>
+
+        <!-- Earth Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="300">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual earth-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg"
+                  alt="Trái Đất - Earth" class="planet-card-img" loading="lazy">
+              </div>
+              <h3 class="card-planet-name">Earth</h3>
+              <p class="card-planet-type">Hành tinh có sự sống</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Earth — Trái Đất</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 12.756 km</li>
+                <li><strong>Khoảng cách:</strong> 149,6 triệu km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 365,25 ngày</li>
+                <li><strong>Nhiệt độ:</strong> 15°C (TB)</li>
+              </ul>
+              <p class="card-fun-fact">🌍 Hành tinh duy nhất trong vũ trụ được xác nhận là đang duy trì sự sống!</p>
+            </section>
+          </section>
+        </article>
+
+        <!-- Mars Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="400">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual mars-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/600px-OSIRIS_Mars_true_color.jpg"
+                  alt="Sao Hỏa - Mars" class="planet-card-img" loading="lazy">
+              </div>
+              <h3 class="card-planet-name">Mars</h3>
+              <p class="card-planet-type">Hành tinh đất đá</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Mars — Sao Hỏa</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 6.792 km</li>
+                <li><strong>Khoảng cách:</strong> 227,9 triệu km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 687 ngày</li>
+                <li><strong>Nhiệt độ:</strong> −65°C (TB)</li>
+              </ul>
+              <p class="card-fun-fact">🏔️ Sở hữu ngọn núi lửa cao nhất Hệ Mặt Trời — Olympus Mons cao 21,9 km!</p>
+            </section>
+          </section>
+        </article>
+
+        <!-- Jupiter Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="100">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual jupiter-visual">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Jupiter.jpg/600px-Jupiter.jpg"
+                  alt="Sao Mộc - Jupiter" class="planet-card-img" loading="lazy">
+              </div>
+              <h3 class="card-planet-name">Jupiter</h3>
+              <p class="card-planet-type">Khí khổng lồ</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Jupiter — Sao Mộc</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 142.984 km</li>
+                <li><strong>Khoảng cách:</strong> 778,6 triệu km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 4.333 ngày</li>
+                <li><strong>Nhiệt độ:</strong> −110°C (TB)</li>
+              </ul>
+              <p class="card-fun-fact">👑 Hành tinh lớn nhất — Vết Đỏ Lớn là cơn bão khổng lồ quay hơn 300 năm!</p>
+            </section>
+          </section>
+        </article>
+
+        <!-- Saturn Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="200">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual saturn-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/600px-Saturn_during_Equinox.jpg"
+                  alt="Sao Thổ - Saturn" class="planet-card-img saturn-card-img" loading="lazy">
+                <span class="card-saturn-ring"></span>
+              </div>
+              <h3 class="card-planet-name">Saturn</h3>
+              <p class="card-planet-type">Khí khổng lồ</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Saturn — Sao Thổ</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 120.536 km</li>
+                <li><strong>Khoảng cách:</strong> 1,434 tỷ km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 10.759 ngày</li>
+                <li><strong>Nhiệt độ:</strong> −140°C (TB)</li>
+              </ul>
+              <p class="card-fun-fact">💍 Hệ thống vành đai tráng lệ từ hạt băng — có thể nổi trên mặt nước!</p>
+            </section>
+          </section>
+        </article>
+
+        <!-- Uranus Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="300">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual uranus-visual">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/600px-Uranus2.jpg"
+                  alt="Sao Thiên Vương - Uranus" class="planet-card-img" loading="lazy">
+              </div>
+              <h3 class="card-planet-name">Uranus</h3>
+              <p class="card-planet-type">Băng khổng lồ</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Uranus — Sao Thiên Vương</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 51.118 km</li>
+                <li><strong>Khoảng cách:</strong> 2,871 tỷ km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 30.687 ngày</li>
+                <li><strong>Nhiệt độ:</strong> −195°C (TB)</li>
+              </ul>
+              <p class="card-fun-fact">🔄 Trục tự quay nghiêng tới 98° — hành tinh gần như nằm ngang trên quỹ đạo!</p>
+            </section>
+          </section>
+        </article>
+
+        <!-- Neptune Card -->
+        <article class="planet-card" data-aos="fade-up" data-aos-delay="400">
+          <section class="planet-card-inner">
+            <section class="planet-card-front">
+              <div class="card-planet-visual neptune-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Neptune_Full.jpg/600px-Neptune_Full.jpg"
+                  alt="Sao Hải Vương - Neptune" class="planet-card-img" loading="lazy">
+              </div>
+              <h3 class="card-planet-name">Neptune</h3>
+              <p class="card-planet-type">Băng khổng lồ</p>
+            </section>
+            <section class="planet-card-back">
+              <h3>Neptune — Sao Hải Vương</h3>
+              <ul class="card-stats">
+                <li><strong>Đường kính:</strong> 49.528 km</li>
+                <li><strong>Khoảng cách:</strong> 4,495 tỷ km</li>
+                <li><strong>Chu kỳ quỹ đạo:</strong> 60.190 ngày</li>
+                <li><strong>Nhiệt độ:</strong> −200°C (TB)</li>
+              </ul>
+              <p class="card-fun-fact">💨 Sở hữu những cơn gió siêu thanh mạnh nhất Hệ Mặt Trời — lên tới 2.100 km/h!
+              </p>
+            </section>
+          </section>
+        </article>
+
+      </section>
+    </section>
+
+    <!-- ── 4. PLANET COMPARISON SECTION ── -->
+    <section id="comparison" class="comparison-section">
+      <h2 class="section-title" data-aos="fade-up">
+        <span class="section-icon">⚖️</span> Planet Comparison
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Đối chiếu kích thước, khối lượng, nhiệt độ, khoảng cách và chu kỳ quỹ đạo giữa các thiên thể
+      </p>
+
+      <!-- Comparison Selector Radio Controls (Pure CSS) -->
+      <input type="radio" name="compare-mode" id="compare-earth-mars" class="sr-only" checked>
+      <input type="radio" name="compare-mode" id="compare-earth-jupiter" class="sr-only">
+      <input type="radio" name="compare-mode" id="compare-earth-venus" class="sr-only">
+      <input type="radio" name="compare-mode" id="compare-all-table" class="sr-only">
+
+      <!-- Navigation Tabs -->
+      <section class="compare-tabs-nav" data-aos="fade-up" data-aos-delay="150" aria-label="Lựa chọn cặp so sánh">
+        <label for="compare-earth-mars" class="compare-tab-btn" tabindex="0">Trái Đất vs Sao Hỏa</label>
+        <label for="compare-earth-jupiter" class="compare-tab-btn" tabindex="0">Trái Đất vs Sao Mộc</label>
+        <label for="compare-earth-venus" class="compare-tab-btn" tabindex="0">Trái Đất vs Sao Kim</label>
+        <label for="compare-all-table" class="compare-tab-btn" tabindex="0">Bảng Tổng Hợp 8 Hành Tinh</label>
+      </section>
+
+      <!-- Panel 1: Earth vs Mars -->
+      <section class="compare-view view-earth-mars" data-aos="fade-up" data-aos-delay="200">
+        <div class="compare-cards-wrapper">
+          <!-- Planet 1: Earth -->
+          <article class="compare-card">
+            <header class="compare-card-header">
+              <div class="card-planet-visual earth-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg"
+                  alt="Trái Đất" class="compare-planet-img" loading="lazy">
+              </div>
+              <h3 class="compare-name">Trái Đất (Earth)</h3>
+              <span class="compare-tag">Hành tinh Đất đá • Có sự sống</span>
+            </header>
+            <div class="compare-metrics">
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Kích thước &amp; Khối lượng</span>
+                  <span class="metric-val">12.756 km • 1.0 M⊕</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-size"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Nhiệt độ trung bình</span>
+                  <span class="metric-val text-cyan">15°C (Lý tưởng)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-temp"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Khoảng cách đến Mặt Trời</span>
+                  <span class="metric-val">149,6 triệu km (1.0 AU)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-dist"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Thời gian quay quanh MT</span>
+                  <span class="metric-val">365,25 ngày (1 năm)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-year"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- VS Badge -->
+          <div class="compare-vs-badge" aria-hidden="true"><span>VS</span></div>
+
+          <!-- Planet 2: Mars -->
+          <article class="compare-card">
+            <header class="compare-card-header">
+              <div class="card-planet-visual mars-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/600px-OSIRIS_Mars_true_color.jpg"
+                  alt="Sao Hỏa" class="compare-planet-img" loading="lazy">
+              </div>
+              <h3 class="compare-name">Sao Hỏa (Mars)</h3>
+              <span class="compare-tag">Hành tinh Đất đá • Miền đất hứa</span>
+            </header>
+            <div class="compare-metrics">
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Kích thước &amp; Khối lượng</span>
+                  <span class="metric-val">6.792 km (53%) • 0.11 M⊕</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-mars-size"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Nhiệt độ trung bình</span>
+                  <span class="metric-val text-blue">−65°C (Lạnh khô)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-mars-temp"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Khoảng cách đến Mặt Trời</span>
+                  <span class="metric-val">227,9 triệu km (1.52 AU)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-mars-dist"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Thời gian quay quanh MT</span>
+                  <span class="metric-val">687 ngày (gần 1.9 năm)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-mars-year"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <aside class="compare-insight">
+          <span class="insight-icon">💡</span>
+          <p><strong>Kết luận so sánh:</strong> Sao Hỏa chỉ có đường kính bằng khoảng một nửa và khối lượng bằng 11%
+            Trái Đất. Trọng lực trên Sao Hỏa chỉ bằng 38% Trái Đất, nghĩa là một người nặng 70kg ở Trái Đất sẽ chỉ nặng
+            khoảng 26.6kg trên Sao Hỏa!</p>
+        </aside>
+      </section>
+
+      <!-- Panel 2: Earth vs Jupiter -->
+      <section class="compare-view view-earth-jupiter">
+        <div class="compare-cards-wrapper">
+          <!-- Planet 1: Earth -->
+          <article class="compare-card">
+            <header class="compare-card-header">
+              <div class="card-planet-visual earth-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg"
+                  alt="Trái Đất" class="compare-planet-img" loading="lazy">
+              </div>
+              <h3 class="compare-name">Trái Đất (Earth)</h3>
+              <span class="compare-tag">Hành tinh Đất đá</span>
+            </header>
+            <div class="compare-metrics">
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Kích thước &amp; Khối lượng</span>
+                  <span class="metric-val">12.756 km • 1.0 M⊕</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-size-tiny"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Nhiệt độ trung bình</span>
+                  <span class="metric-val text-cyan">15°C</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-temp"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Khoảng cách đến Mặt Trời</span>
+                  <span class="metric-val">149,6 triệu km</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-dist-close"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Thời gian quay quanh MT</span>
+                  <span class="metric-val">365 ngày (1 năm)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-year-short"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- VS Badge -->
+          <div class="compare-vs-badge" aria-hidden="true"><span>VS</span></div>
+
+          <!-- Planet 2: Jupiter -->
+          <article class="compare-card">
+            <header class="compare-card-header">
+              <div class="card-planet-visual jupiter-visual">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Jupiter.jpg/600px-Jupiter.jpg"
+                  alt="Sao Mộc" class="compare-planet-img" loading="lazy">
+              </div>
+              <h3 class="compare-name">Sao Mộc (Jupiter)</h3>
+              <span class="compare-tag">Khí khổng lồ • Vua hệ Mặt Trời</span>
+            </header>
+            <div class="compare-metrics">
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Kích thước &amp; Khối lượng</span>
+                  <span class="metric-val">142.984 km (11.2×) • 317.8 M⊕</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-size-huge"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Nhiệt độ trung bình</span>
+                  <span class="metric-val text-blue">−110°C (Mây đỉnh)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-jup-temp"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Khoảng cách đến Mặt Trời</span>
+                  <span class="metric-val">778,6 triệu km (5.2 AU)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-jup-dist"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Thời gian quay quanh MT</span>
+                  <span class="metric-val">4.333 ngày (11.86 năm)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-jup-year"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <aside class="compare-insight">
+          <span class="insight-icon">💡</span>
+          <p><strong>Kết luận so sánh:</strong> Sao Mộc to lớn đến mức có thể chứa hơn 1.300 Trái Đất bên trong. Khối
+            lượng của nó lớn hơn gấp 2.5 lần tổng khối lượng của tất cả các hành tinh khác trong hệ Mặt Trời cộng lại!
+          </p>
+        </aside>
+      </section>
+
+      <!-- Panel 3: Earth vs Venus -->
+      <section class="compare-view view-earth-venus">
+        <div class="compare-cards-wrapper">
+          <!-- Planet 1: Earth -->
+          <article class="compare-card">
+            <header class="compare-card-header">
+              <div class="card-planet-visual earth-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg"
+                  alt="Trái Đất" class="compare-planet-img" loading="lazy">
+              </div>
+              <h3 class="compare-name">Trái Đất (Earth)</h3>
+              <span class="compare-tag">Hành tinh Đất đá • Ôn hòa</span>
+            </header>
+            <div class="compare-metrics">
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Kích thước &amp; Khối lượng</span>
+                  <span class="metric-val">12.756 km • 1.0 M⊕</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-size"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Nhiệt độ trung bình</span>
+                  <span class="metric-val text-cyan">15°C</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-temp"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Khoảng cách đến Mặt Trời</span>
+                  <span class="metric-val">149,6 triệu km</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-dist"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Thời gian quay quanh MT</span>
+                  <span class="metric-val">365 ngày</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-earth-year"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <!-- VS Badge -->
+          <div class="compare-vs-badge" aria-hidden="true"><span>VS</span></div>
+
+          <!-- Planet 2: Venus -->
+          <article class="compare-card">
+            <header class="compare-card-header">
+              <div class="card-planet-visual venus-visual">
+                <img
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/600px-Venus-real_color.jpg"
+                  alt="Sao Kim" class="compare-planet-img" loading="lazy">
+              </div>
+              <h3 class="compare-name">Sao Kim (Venus)</h3>
+              <span class="compare-tag">Song sinh địa ngục • Nóng nhất</span>
+            </header>
+            <div class="compare-metrics">
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Kích thước &amp; Khối lượng</span>
+                  <span class="metric-val">12.104 km (95%) • 0.82 M⊕</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-venus-size"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Nhiệt độ trung bình</span>
+                  <span class="metric-val text-red">462°C (Lò lửa)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-venus-temp"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Khoảng cách đến Mặt Trời</span>
+                  <span class="metric-val">108,2 triệu km (0.72 AU)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-venus-dist"></div>
+                </div>
+              </div>
+              <div class="metric-item">
+                <div class="metric-info">
+                  <span class="metric-label">Thời gian quay quanh MT</span>
+                  <span class="metric-val">225 ngày (Chu kỳ năm)</span>
+                </div>
+                <div class="metric-bar-track">
+                  <div class="metric-bar-fill fill-venus-year"></div>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+        <aside class="compare-insight">
+          <span class="insight-icon">💡</span>
+          <p><strong>Kết luận so sánh:</strong> Dù gần như giống hệt Trái Đất về kích thước (95%), Sao Kim lại có bầu
+            khí quyển nhà kính cực đoan với CO₂ chiếm 96% và áp suất gấp 90 lần Trái Đất, làm tan chảy cả chì!</p>
+        </aside>
+      </section>
+
+      <!-- Panel 4: Comprehensive Comparison Table -->
+      <section class="compare-view view-all-table">
+        <div class="table-responsive-wrapper">
+          <table class="compare-data-table">
+            <thead>
+              <tr>
+                <th>Hành tinh</th>
+                <th>Phân loại</th>
+                <th>Đường kính</th>
+                <th>Khối lượng</th>
+                <th>Nhiệt độ TB</th>
+                <th>Khoảng cách MT</th>
+                <th>Chu kỳ quỹ đạo</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Mercury_in_color_-_Prockter07-edit1.jpg/600px-Mercury_in_color_-_Prockter07-edit1.jpg"
+                    alt="Mercury" class="table-thumb"> Mercury</td>
+                <td>Đá</td>
+                <td>4.879 km</td>
+                <td>0.06 M⊕</td>
+                <td>167°C</td>
+                <td>57,9 tr. km</td>
+                <td>88 ngày</td>
+              </tr>
+              <tr>
+                <td><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e5/Venus-real_color.jpg/600px-Venus-real_color.jpg"
+                    alt="Venus" class="table-thumb"> Venus</td>
+                <td>Đá</td>
+                <td>12.104 km</td>
+                <td>0.82 M⊕</td>
+                <td>462°C</td>
+                <td>108,2 tr. km</td>
+                <td>225 ngày</td>
+              </tr>
+              <tr class="table-highlight">
+                <td><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/97/The_Earth_seen_from_Apollo_17.jpg/600px-The_Earth_seen_from_Apollo_17.jpg"
+                    alt="Earth" class="table-thumb"> Earth 🌍</td>
+                <td>Đá (Sống)</td>
+                <td>12.756 km</td>
+                <td>1.00 M⊕</td>
+                <td>15°C</td>
+                <td>149,6 tr. km</td>
+                <td>365,25 ngày</td>
+              </tr>
+              <tr>
+                <td><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/OSIRIS_Mars_true_color.jpg/600px-OSIRIS_Mars_true_color.jpg"
+                    alt="Mars" class="table-thumb"> Mars</td>
+                <td>Đá</td>
+                <td>6.792 km</td>
+                <td>0.11 M⊕</td>
+                <td>−65°C</td>
+                <td>227,9 tr. km</td>
+                <td>687 ngày</td>
+              </tr>
+              <tr class="table-highlight">
+                <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Jupiter.jpg/600px-Jupiter.jpg"
+                    alt="Jupiter" class="table-thumb"> Jupiter 👑</td>
+                <td>Khí khổng lồ</td>
+                <td>142.984 km</td>
+                <td>317.8 M⊕</td>
+                <td>−110°C</td>
+                <td>778,6 tr. km</td>
+                <td>11,86 năm</td>
+              </tr>
+              <tr>
+                <td><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/Saturn_during_Equinox.jpg/600px-Saturn_during_Equinox.jpg"
+                    alt="Saturn" class="table-thumb"> Saturn</td>
+                <td>Khí khổng lồ</td>
+                <td>120.536 km</td>
+                <td>95.2 M⊕</td>
+                <td>−140°C</td>
+                <td>1,43 tỷ km</td>
+                <td>29,45 năm</td>
+              </tr>
+              <tr>
+                <td><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3d/Uranus2.jpg/600px-Uranus2.jpg"
+                    alt="Uranus" class="table-thumb"> Uranus</td>
+                <td>Băng khổng lồ</td>
+                <td>51.118 km</td>
+                <td>14.5 M⊕</td>
+                <td>−195°C</td>
+                <td>2,87 tỷ km</td>
+                <td>84 năm</td>
+              </tr>
+              <tr>
+                <td><img
+                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/56/Neptune_Full.jpg/600px-Neptune_Full.jpg"
+                    alt="Neptune" class="table-thumb"> Neptune</td>
+                <td>Băng khổng lồ</td>
+                <td>49.528 km</td>
+                <td>17.1 M⊕</td>
+                <td>−200°C</td>
+                <td>4,50 tỷ km</td>
+                <td>164,8 năm</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+    </section>
+
+    <!-- ── 5. PLANET SPOTLIGHT SECTION ── -->
+    <section id="spotlight" class="spotlight-section">
+      <h2 class="section-title" data-aos="fade-up">
+        <span class="section-icon">✨</span> Planet Spotlight
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Khám phá hành tinh nổi bật với khung ảnh trực quan lớn, hiệu ứng hào quang và bảng dữ liệu mở rộng
+      </p>
+
+      <!-- Expand Toggle Checkbox (Pure CSS) -->
+      <input type="checkbox" id="spotlight-expand-toggle" class="sr-only"
+        aria-label="Mở rộng chi tiết hành tinh nổi bật">
+
+      <section class="spotlight-container" data-aos="zoom-in" data-aos-delay="200">
+        <!-- Interactive Planet Sphere Area with Glow & Hover Name -->
+        <div class="spotlight-sphere-box">
+          <label for="spotlight-expand-toggle" class="spotlight-sphere-hitbox"
+            title="Nhấn vào hành tinh để mở rộng thông tin">
+            <div class="spotlight-planet-sphere jupiter-spotlight-visual">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/e/e2/Jupiter.jpg/600px-Jupiter.jpg"
+                alt="Sao Mộc - Jupiter Spotlight" class="spotlight-real-img" loading="lazy">
+              <span class="spotlight-ambient-ring"></span>
+            </div>
+            <!-- Name tag appearing on hover -->
+            <div class="spotlight-hover-name">
+              <span class="hover-tag-icon">✦</span>
+              <span class="hover-tag-text">JUPITER • SAO MỘC</span>
+              <span class="hover-tag-sub">Nhấn để mở rộng</span>
+            </div>
+          </label>
+        </div>
+
+        <!-- Spotlight Core Details -->
+        <article class="spotlight-info">
+          <div class="spotlight-badge">
+            <span class="badge-dot"></span>
+            <span class="badge-text">SPOTLIGHT CỦA TUẦN</span>
+          </div>
+          <h3 class="spotlight-title">Jupiter — Vua Của Các Hành Tinh</h3>
+          <p class="spotlight-lead">
+            Thiên thể hùng vĩ nhất trong hệ Mặt Trời — một khối khí khổng lồ xoáy tròn với từ trường mạnh gấp 20.000 lần
+            Trái Đất, đóng vai trò như "người bảo hộ vũ trụ" bảo vệ các hành tinh đất đá khỏi thiên thạch.
+          </p>
+
+          <div class="spotlight-quick-stats">
+            <div class="quick-stat-box">
+              <span class="stat-num">95</span>
+              <span class="stat-lbl">Mặt trăng vệ tinh</span>
+            </div>
+            <div class="quick-stat-box">
+              <span class="stat-num">300+ năm</span>
+              <span class="stat-lbl">Cơn bão Vết Đỏ Lớn</span>
+            </div>
+            <div class="quick-stat-box">
+              <span class="stat-num">9.9 giờ</span>
+              <span class="stat-lbl">Tốc độ tự quay (Nhanh nhất)</span>
+            </div>
+          </div>
+
+          <label for="spotlight-expand-toggle" class="spotlight-expand-btn" tabindex="0" role="button">
+            <span class="btn-text-default">Khám Phá Dữ Kiện Chuyên Sâu</span>
+            <span class="btn-text-active">Thu Gọn Dữ Kiện</span>
+            <span class="btn-expand-arrow">▾</span>
+          </label>
+        </article>
+      </section>
+
+      <!-- Expandable Deep-Dive Drawer Panel -->
+      <section class="spotlight-expanded-panel">
+        <div class="expanded-grid">
+          <article class="expanded-card">
+            <div class="expanded-icon">🌪️</div>
+            <h4>Vết Đỏ Lớn (Great Red Spot)</h4>
+            <p>Cơn bão xoáy nghịch khổng lồ có đường kính 16.000 km, lớn hơn cả Trái Đất. Sức gió ở rìa bão đạt tới 680
+              km/h và đã hoành hành liên tục suốt hơn 300 năm qua.</p>
+          </article>
+          <article class="expanded-card">
+            <div class="expanded-icon">🌊</div>
+            <h4>Europa — Đại Dương Tiềm Ẩn Sự Sống</h4>
+            <p>Vệ tinh Europa được bao phủ bởi lớp vỏ băng dày, bên dưới là đại dương nước lỏng mặn chứa lượng nước gấp
+              đôi toàn bộ đại dương trên Trái Đất, nơi được coi là ứng viên số 1 cho sự sống ngoài hành tinh.</p>
+          </article>
+          <article class="expanded-card">
+            <div class="expanded-icon">🛰️</div>
+            <h4>Sứ Mệnh Tàu Thám Hiểm Juno</h4>
+            <p>Tàu vũ trụ Juno của NASA quay quanh các cực của Sao Mộc từ năm 2016, xuyên qua các lớp mây dày để phát
+              hiện lõi hành tinh đặc biệt khuếch tán và cấu trúc bão lốc cực kỳ phức tạp.</p>
+          </article>
+        </div>
+      </section>
+    </section>
+
+    <!-- ── 6. MOON PHASES SECTION ── -->
+    <section id="moon-phases" class="moon-phases-section">
+      <h2 class="section-title" data-aos="fade-up">
+        <span class="section-icon">🌙</span> Moon Phases — Các Pha Mặt Trăng
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Chu kỳ tuần hoàn 29.5 ngày từ bóng tối nguyên thủy đến vầng trăng tròn rực rỡ
+      </p>
+
+      <!-- Cyclic Progress Orbital Banner -->
+      <div class="lunar-cycle-bar" data-aos="fade-up" data-aos-delay="150" aria-hidden="true">
+        <span class="cycle-track"></span>
+        <span class="cycle-glow-orb"></span>
+      </div>
+
+      <!-- 8 Moon Phases Grid -->
+      <section class="moon-phases-grid" aria-label="8 pha của Mặt Trăng">
+
+        <!-- Phase 1: New Moon -->
+        <article class="phase-card" data-aos="fade-up" data-aos-delay="100">
+          <div class="phase-moon-sphere phase-new-moon"></div>
+          <span class="phase-day">Ngày 1</span>
+          <h3 class="phase-name">Trăng Mới</h3>
+          <span class="phase-en">New Moon</span>
+          <div class="phase-illumination">Độ sáng: <strong>0%</strong></div>
+          <p class="phase-desc">Mặt Trời nằm phía sau Mặt Trăng, nửa hướng về Trái Đất hoàn toàn chìm trong bóng tối.
+          </p>
+        </article>
+
+        <!-- Phase 2: Waxing Crescent -->
+        <article class="phase-card" data-aos="fade-up" data-aos-delay="150">
+          <div class="phase-moon-sphere phase-waxing-crescent"></div>
+          <span class="phase-day">Ngày 3 – 7</span>
+          <h3 class="phase-name">Trăng Lưỡi Liềm Đầu Tháng</h3>
+          <span class="phase-en">Waxing Crescent</span>
+          <div class="phase-illumination">Độ sáng: <strong>1% – 49%</strong></div>
+          <p class="phase-desc">Một dải sáng cong mảnh mai xuất hiện ở phía Tây ngay sau khi hoàng hôn buông xuống.</p>
+        </article>
+
+        <!-- Phase 3: First Quarter -->
+        <article class="phase-card" data-aos="fade-up" data-aos-delay="200">
+          <div class="phase-moon-sphere phase-first-quarter"></div>
+          <span class="phase-day">Ngày 7 – 8</span>
+          <h3 class="phase-name">Bán Nguyệt Đầu Tháng</h3>
+          <span class="phase-en">First Quarter</span>
+          <div class="phase-illumination">Độ sáng: <strong>50%</strong></div>
+          <p class="phase-desc">Đúng một nửa đĩa Trăng bên phải được chiếu sáng, mọc vào giữa trưa và lặn vào nửa đêm.
+          </p>
+        </article>
+
+        <!-- Phase 4: Waxing Gibbous -->
+        <article class="phase-card" data-aos="fade-up" data-aos-delay="250">
+          <div class="phase-moon-sphere phase-waxing-gibbous"></div>
+          <span class="phase-day">Ngày 9 – 13</span>
+          <h3 class="phase-name">Trăng Trương Đầu Tháng</h3>
+          <span class="phase-en">Waxing Gibbous</span>
+          <div class="phase-illumination">Độ sáng: <strong>51% – 99%</strong></div>
+          <p class="phase-desc">Phần sáng tiếp tục phình to hơn một nửa, chuẩn bị bước vào giai đoạn viên mãn nhất.</p>
+        </article>
+
+        <!-- Phase 5: Full Moon -->
+        <article class="phase-card phase-card-full" data-aos="fade-up" data-aos-delay="300">
+          <div class="phase-moon-sphere phase-full-moon"></div>
+          <span class="phase-day">Ngày 14 – 15</span>
+          <h3 class="phase-name">Trăng Tròn (Vọng)</h3>
+          <span class="phase-en">Full Moon</span>
+          <div class="phase-illumination">Độ sáng: <strong>100%</strong></div>
+          <p class="phase-desc">Mặt Trời và Mặt Trăng đối diện nhau qua Trái Đất, toàn bộ bề mặt phản chiếu ánh sáng
+            lộng lẫy.</p>
+        </article>
+
+        <!-- Phase 6: Waning Gibbous -->
+        <article class="phase-card" data-aos="fade-up" data-aos-delay="350">
+          <div class="phase-moon-sphere phase-waning-gibbous"></div>
+          <span class="phase-day">Ngày 16 – 20</span>
+          <h3 class="phase-name">Trăng Trương Cuối Tháng</h3>
+          <span class="phase-en">Waning Gibbous</span>
+          <div class="phase-illumination">Độ sáng: <strong>99% – 51%</strong></div>
+          <p class="phase-desc">Sau khi đạt đỉnh tròn, bóng tối bắt đầu xâm lấn dần từ rìa bên phải của Mặt Trăng.</p>
+        </article>
+
+        <!-- Phase 7: Third Quarter -->
+        <article class="phase-card" data-aos="fade-up" data-aos-delay="400">
+          <div class="phase-moon-sphere phase-third-quarter"></div>
+          <span class="phase-day">Ngày 21 – 22</span>
+          <h3 class="phase-name">Bán Nguyệt Cuối Tháng</h3>
+          <span class="phase-en">Third Quarter</span>
+          <div class="phase-illumination">Độ sáng: <strong>50%</strong></div>
+          <p class="phase-desc">Một nửa bên trái được chiếu sáng, mọc vào lúc nửa đêm và lặn vào giữa trưa hôm sau.</p>
+        </article>
+
+        <!-- Phase 8: Waning Crescent -->
+        <article class="phase-card" data-aos="fade-up" data-aos-delay="450">
+          <div class="phase-moon-sphere phase-waning-crescent"></div>
+          <span class="phase-day">Ngày 23 – 28</span>
+          <h3 class="phase-name">Trăng Lưỡi Liềm Cuối Tháng</h3>
+          <span class="phase-en">Waning Crescent</span>
+          <div class="phase-illumination">Độ sáng: <strong>49% – 1%</strong></div>
+          <p class="phase-desc">Lưỡi liềm mỏng manh bên trái chỉ có thể nhìn thấy vào lúc rạng đông trước khi chu kỳ mới
+            bắt đầu.</p>
+        </article>
+
+      </section>
+    </section>
+
+    <!-- ── 7. SPACE MISSIONS SECTION ── -->
+    <section id="missions" class="missions-section">
+      <h2 class="section-title" data-aos="fade-up">
+        <span class="section-icon">🚀</span> Space Missions — Hành Trình Thám Hiểm
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Những sứ mệnh lịch sử vĩ đại đưa trí tuệ và khát vọng của loài người vươn ra các vì sao
+      </p>
+
+      <!-- Timeline Container -->
+      <section class="missions-timeline" aria-label="Dòng thời gian các sứ mệnh không gian">
+        <div class="timeline-line" aria-hidden="true">
+          <!-- Animated Explorer Spaceship cruising down the timeline -->
+          <div class="timeline-cruiser" title="Tàu thám hiểm đang di chuyển dọc theo cột mốc lịch sử">
+            <div class="cruiser-ship">
+              <div class="cruiser-plasma-thruster"></div>
+              <svg viewBox="0 0 44 80" fill="none" xmlns="http://www.w3.org/2000/svg" class="cruiser-svg">
+                <!-- Spaceship Body pointing DOWN -->
+                <path d="M22 76 L32 46 L28 22 L22 6 L16 22 L12 46 Z" fill="url(#cruiserBodyGrad)" stroke="#00d4ff"
+                  stroke-width="1.5" />
+                <!-- Wings -->
+                <path d="M12 44 L3 58 L12 55 Z" fill="#6c63ff" stroke="#a0a4cc" stroke-width="0.8" />
+                <path d="M32 44 L41 58 L32 55 Z" fill="#6c63ff" stroke="#a0a4cc" stroke-width="0.8" />
+                <!-- Solar panels / fins -->
+                <rect x="5" y="47" width="5" height="2" fill="#00ffff" opacity="0.8" />
+                <rect x="34" y="47" width="5" height="2" fill="#00ffff" opacity="0.8" />
+                <!-- Cockpit Canopy -->
+                <ellipse cx="22" cy="32" rx="4.5" ry="9" fill="#00ffff" opacity="0.9" />
+                <ellipse cx="22" cy="32" rx="2.5" ry="5" fill="#ffffff" opacity="0.6" />
+                <!-- Thruster nozzles at top -->
+                <rect x="17" y="3" width="3" height="4" rx="1" fill="#ff9900" />
+                <rect x="24" y="3" width="3" height="4" rx="1" fill="#ff9900" />
+                <defs>
+                  <linearGradient id="cruiserBodyGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stop-color="#14193d" />
+                    <stop offset="50%" stop-color="#32448f" />
+                    <stop offset="100%" stop-color="#8ba1ff" />
+                  </linearGradient>
+                </defs>
+              </svg>
+            </div>
+            <div class="cruiser-beacon"></div>
+          </div>
+        </div>
+
+        <!-- Mission 1: 1969 Apollo 11 -->
+        <article class="timeline-item item-left" data-aos="fade-right" data-aos-delay="100">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="mission-card">
+            <header class="mission-header">
+              <span class="mission-year">1969</span>
+              <span class="mission-badge">Mặt Trăng • Có người lái</span>
+            </header>
+            <div class="mission-visual-box apollo-visual">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a2/Apollo_11_insignia.png/300px-Apollo_11_insignia.png"
+                alt="Apollo 11 Mission Patch" class="mission-real-img" loading="lazy">
+            </div>
+            <h3 class="mission-title">Sứ Mệnh Apollo 11 — Bước Chân Lịch Sử</h3>
+            <p class="mission-quote">"Một bước đi nhỏ của con người, một bước tiến vĩ đại của nhân loại." — Neil
+              Armstrong</p>
+            <div class="mission-details">
+              <div class="detail-block">
+                <span class="detail-title">🎯 Mục tiêu sứ mệnh</span>
+                <p>Thực hiện chuyến bay có người lái đầu tiên hạ cánh an toàn xuống bề mặt Mặt Trăng tại Biển Tĩnh Lặng
+                  và trở về Trái Đất nguyên vẹn.</p>
+              </div>
+              <div class="detail-block">
+                <span class="detail-title">🏆 Thành tựu nổi bật</span>
+                <p>Neil Armstrong &amp; Buzz Aldrin cắm cờ Mỹ, mang về 21,5 kg mẫu đất đá Mặt Trăng, mở ra kỷ nguyên
+                  thám hiểm liên hành tinh của nền văn minh loài người.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mission 2: 1977 Voyager 1 & 2 -->
+        <article class="timeline-item item-right" data-aos="fade-left" data-aos-delay="200">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="mission-card">
+            <header class="mission-header">
+              <span class="mission-year">1977</span>
+              <span class="mission-badge">Không Gian Liên Sao</span>
+            </header>
+            <div class="mission-visual-box voyager-visual">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Voyager_spacecraft_model.png/480px-Voyager_spacecraft_model.png"
+                alt="Voyager Spacecraft Model" class="mission-real-img" loading="lazy">
+            </div>
+            <h3 class="mission-title">Voyager 1 &amp; 2 — Sứ Giả Không Gian Liên Sao</h3>
+            <p class="mission-quote">Con tàu đi xa nhất trong lịch sử nhân loại — hiện đã vượt ra ngoài nhật quyển ở
+              khoảng cách 24 tỷ km.</p>
+            <div class="mission-details">
+              <div class="detail-block">
+                <span class="detail-title">🎯 Mục tiêu sứ mệnh</span>
+                <p>Khảo sát cận cảnh 4 hành tinh khổng lồ (Sao Mộc, Sao Thổ, Sao Thiên Vương, Sao Hải Vương) và mở rộng
+                  hành trình vào khoảng không giữa các vì sao.</p>
+              </div>
+              <div class="detail-block">
+                <span class="detail-title">🏆 Thành tựu nổi bật</span>
+                <p>Phát hiện núi lửa trên vệ tinh Io, đại dương ngầm Europa, gửi về bức ảnh huyền thoại "Pale Blue Dot",
+                  và mang theo Đĩa Vàng mạ vàng chứa âm thanh, hình ảnh gửi các nền văn minh vũ trụ.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mission 3: 2011 / 2020 Mars Rovers -->
+        <article class="timeline-item item-left" data-aos="fade-right" data-aos-delay="300">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="mission-card">
+            <header class="mission-header">
+              <span class="mission-year">2011 &amp; 2020</span>
+              <span class="mission-badge">Sao Hỏa • Robot tự hành</span>
+            </header>
+            <div class="mission-visual-box mars-rover-visual">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d8/NASA_Mars_Rover.jpg/500px-NASA_Mars_Rover.jpg"
+                alt="NASA Mars Curiosity &amp; Perseverance Rover" class="mission-real-img" loading="lazy">
+            </div>
+            <h3 class="mission-title">Curiosity &amp; Perseverance — Săn Tìm Sự Sống Sao Hỏa</h3>
+            <p class="mission-quote">Phòng thí nghiệm di động tối tân hoạt động miệt mài trên bề mặt Hành tinh Đỏ.</p>
+            <div class="mission-details">
+              <div class="detail-block">
+                <span class="detail-title">🎯 Mục tiêu sứ mệnh</span>
+                <p>Tìm kiếm dấu vết hóa thạch vi sinh vật cổ đại tại miệng hố va chạm Jezero, phân tích địa chất và thử
+                  nghiệm công nghệ sinh tồn cho con người.</p>
+              </div>
+              <div class="detail-block">
+                <span class="detail-title">🏆 Thành tựu nổi bật</span>
+                <p>Trực thăng Ingenuity thực hiện chuyến bay khí động đầu tiên ngoài Trái Đất; tạo ra oxy thành công từ
+                  bầu khí quyển CO₂ (thiết bị MOXIE); thu thập hàng chục ống mẫu đất đá để chuyển giao về Trái Đất trong
+                  tương lai.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <!-- Mission 4: 2021 JWST -->
+        <article class="timeline-item item-right" data-aos="fade-left" data-aos-delay="400">
+          <div class="timeline-dot"><span class="dot-inner"></span></div>
+          <div class="mission-card">
+            <header class="mission-header">
+              <span class="mission-year">2021</span>
+              <span class="mission-badge">Thiên Văn Hồng Ngoại</span>
+            </header>
+            <div class="mission-visual-box jwst-visual">
+              <img
+                src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/00/James_Webb_Space_Telescope_Mirrors_Folded.jpg/500px-James_Webb_Space_Telescope_Mirrors_Folded.jpg"
+                alt="James Webb Space Telescope" class="mission-real-img" loading="lazy">
+            </div>
+            <h3 class="mission-title">James Webb (JWST) — Cửa Sổ Nhìn Về Bình Minh Vũ Trụ</h3>
+            <p class="mission-quote">Kính viễn vọng không gian vĩ đại và tinh vi nhất từng được chế tạo trong lịch sử
+              loài người.</p>
+            <div class="mission-details">
+              <div class="detail-block">
+                <span class="detail-title">🎯 Mục tiêu sứ mệnh</span>
+                <p>Quan sát các thiên hà đầu tiên được sinh ra sau vụ nổ Big Bang hơn 13.5 tỷ năm trước bằng cảm biến
+                  hồng ngoại cực sâu tại điểm Lagrange L2 (cách Trái Đất 1.5 triệu km).</p>
+              </div>
+              <div class="detail-block">
+                <span class="detail-title">🏆 Thành tựu nổi bật</span>
+                <p>Hệ thống gương lục giác mạ vàng 6.5m cùng tấm chắn nhiệt 5 lớp kích thước bằng sân tennis; ghi lại
+                  những hình ảnh sắc nét chưa từng thấy về vườn ươm sao và tìm thấy hơi nước, CO₂ trong khí quyển ngoại
+                  hành tinh.</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+      </section>
+    </section>
+
+    <!-- ── 8. SPACE FACTS SECTION ── -->
+    <section id="facts" class="space-facts-section">
+      <h2 class="section-title" data-aos="fade-up">
+        <span class="section-icon">🌠</span> Space Facts
+      </h2>
+      <p class="section-subtitle" data-aos="fade-up" data-aos-delay="100">
+        Những sự thật kỳ diệu về vũ trụ bao la
+      </p>
+
+      <section class="facts-grid" aria-label="Danh sách sự thật vũ trụ">
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="100">
+          <span class="fact-number">01</span>
+          <h3 class="fact-title">Khối Lượng Khổng Lồ</h3>
+          <p class="fact-text">Một thìa cà phê vật chất từ sao neutron nặng khoảng <strong>6 tỷ tấn</strong> — bằng
+            trọng lượng của núi Everest!</p>
+        </article>
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="200">
+          <span class="fact-number">02</span>
+          <h3 class="fact-title">Nhiều Hơn Cát Biển</h3>
+          <p class="fact-text">Số lượng ngôi sao trong vũ trụ <strong>nhiều hơn tổng số hạt cát trên tất cả các bãi biển
+              Trái Đất</strong>.</p>
+        </article>
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="300">
+          <span class="fact-number">03</span>
+          <h3 class="fact-title">Mặt Trời Thống Trị</h3>
+          <p class="fact-text">Mặt Trời chiếm <strong>99,86%</strong> tổng khối lượng của toàn bộ hệ Mặt Trời. Tất cả
+            hành tinh chỉ là 0,14%.</p>
+        </article>
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="400">
+          <span class="fact-number">04</span>
+          <h3 class="fact-title">Tốc Độ Ánh Sáng</h3>
+          <p class="fact-text">Ánh sáng mất <strong>8 phút 20 giây</strong> để đi từ Mặt Trời đến Trái Đất — quãng đường
+            150 triệu km.</p>
+        </article>
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="100">
+          <span class="fact-number">05</span>
+          <h3 class="fact-title">Ngày Dài Hơn Năm</h3>
+          <p class="fact-text">Một ngày trên Sao Kim (<strong>243 ngày Trái Đất</strong>) dài hơn một năm trên Sao Kim
+            (225 ngày Trái Đất).</p>
+        </article>
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="200">
+          <span class="fact-number">06</span>
+          <h3 class="fact-title">Vũ Trụ Im Lặng</h3>
+          <p class="fact-text">Không gian hoàn toàn <strong>im lặng</strong> — không có môi trường để âm thanh truyền đi
+            trong chân không vũ trụ.</p>
+        </article>
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="300">
+          <span class="fact-number">07</span>
+          <h3 class="fact-title">Dấu Chân Vĩnh Cửu</h3>
+          <p class="fact-text">Dấu chân của phi hành gia trên Mặt Trăng sẽ tồn tại <strong>100 triệu năm</strong> vì
+            không có gió hay nước xói mòn.</p>
+        </article>
+
+        <article class="fact-card" data-aos="fade-up" data-aos-delay="400">
+          <span class="fact-number">08</span>
+          <h3 class="fact-title">Kích Thước Mặt Trời</h3>
+          <p class="fact-text">Khoảng <strong>1,3 triệu Trái Đất</strong> có thể nằm vừa bên trong Mặt Trời. Đường kính
+            Mặt Trời gấp 109 lần Trái Đất.</p>
+        </article>
+
+      </section>
+    </section>
+
+    <!-- ── 5. PLANET DETAIL MODALS (CSS :target, Semantic HTML5) ── -->
+    <section class="planet-modals-section" aria-label="Chi tiết thông tin các hành tinh">
+
+      <!-- Mercury Modal -->
+      <section id="mercury-detail" class="planet-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modal-mercury-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Mercury"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere mercury-sphere"></div>
+          <h3 id="modal-mercury-name" class="modal-planet-name">Mercury</h3>
+          <p class="modal-planet-type">Hành tinh đá • Gần Mặt Trời nhất</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Mercury">
+            <section class="modal-stat">
+              <span class="stat-value">4.879 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">57,9M km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">88 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">0</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Mercury là hành tinh nhỏ nhất và gần Mặt Trời nhất. Bề mặt đầy hố va chạm, nhiệt
+            độ dao động cực đoan từ −180°C ban đêm đến 430°C ban ngày.</p>
+        </article>
+      </section>
+
+      <!-- Venus Modal -->
+      <section id="venus-detail" class="planet-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modal-venus-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Venus"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere venus-sphere"></div>
+          <h3 id="modal-venus-name" class="modal-planet-name">Venus</h3>
+          <p class="modal-planet-type">Hành tinh đá • Nóng nhất hệ Mặt Trời</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Venus">
+            <section class="modal-stat">
+              <span class="stat-value">12.104 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">108,2M km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">225 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">0</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Venus là hành tinh nóng nhất với nhiệt độ trung bình 462°C do hiệu ứng nhà kính
+            cực mạnh. Bầu khí quyển dày đặc CO₂ tạo áp suất gấp 90 lần Trái Đất.</p>
+        </article>
+      </section>
+
+      <!-- Earth Modal -->
+      <section id="earth-detail" class="planet-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modal-earth-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Earth"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere earth-sphere"></div>
+          <h3 id="modal-earth-name" class="modal-planet-name">Earth</h3>
+          <p class="modal-planet-type">Hành tinh đá • Ngôi nhà của chúng ta</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Earth">
+            <section class="modal-stat">
+              <span class="stat-value">12.756 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">149,6M km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">365,25 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">1</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Trái Đất là hành tinh duy nhất được biết đến có sự sống. 71% bề mặt được bao phủ
+            bởi nước, và bầu khí quyển giàu oxy bảo vệ sự sống khỏi bức xạ vũ trụ.</p>
+        </article>
+      </section>
+
+      <!-- Mars Modal -->
+      <section id="mars-detail" class="planet-modal" role="dialog" aria-modal="true" aria-labelledby="modal-mars-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Mars"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere mars-sphere"></div>
+          <h3 id="modal-mars-name" class="modal-planet-name">Mars</h3>
+          <p class="modal-planet-type">Hành tinh đá • Hành tinh Đỏ</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Mars">
+            <section class="modal-stat">
+              <span class="stat-value">6.792 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">227,9M km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">687 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">2</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Sao Hỏa có màu đỏ đặc trưng do oxide sắt trên bề mặt. Olympus Mons — ngọn núi lửa
+            cao nhất hệ Mặt Trời (21,9 km) — nằm trên hành tinh này.</p>
+        </article>
+      </section>
+
+      <!-- Jupiter Modal -->
+      <section id="jupiter-detail" class="planet-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modal-jupiter-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Jupiter"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere jupiter-sphere"></div>
+          <h3 id="modal-jupiter-name" class="modal-planet-name">Jupiter</h3>
+          <p class="modal-planet-type">Hành tinh khí • Lớn nhất hệ Mặt Trời</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Jupiter">
+            <section class="modal-stat">
+              <span class="stat-value">142.984 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">778,6M km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">4.333 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">95</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Jupiter là hành tinh lớn nhất — có thể chứa hơn 1.300 Trái Đất. Vết Đỏ Lớn là cơn
+            bão khổng lồ đã hoạt động hơn 300 năm, lớn hơn cả Trái Đất.</p>
+        </article>
+      </section>
+
+      <!-- Saturn Modal -->
+      <section id="saturn-detail" class="planet-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modal-saturn-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Saturn"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere saturn-sphere">
+            <span class="modal-saturn-ring"></span>
+          </div>
+          <h3 id="modal-saturn-name" class="modal-planet-name">Saturn</h3>
+          <p class="modal-planet-type">Hành tinh khí • Chúa Tể Vành Đai</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Saturn">
+            <section class="modal-stat">
+              <span class="stat-value">120.536 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">1,434B km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">10.759 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">146</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Saturn nổi tiếng với hệ thống vành đai tuyệt đẹp gồm băng và đá. Mật độ thấp đến
+            mức nếu có đại dương đủ lớn, Saturn có thể nổi trên mặt nước!</p>
+        </article>
+      </section>
+
+      <!-- Uranus Modal -->
+      <section id="uranus-detail" class="planet-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modal-uranus-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Uranus"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere uranus-sphere"></div>
+          <h3 id="modal-uranus-name" class="modal-planet-name">Uranus</h3>
+          <p class="modal-planet-type">Hành tinh băng • Quay nằm ngang</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Uranus">
+            <section class="modal-stat">
+              <span class="stat-value">51.118 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">2,871B km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">30.687 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">28</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Uranus quay nghiêng 98° — gần như nằm ngang trên quỹ đạo, có thể do một vụ va
+            chạm khổng lồ cách đây hàng tỷ năm. Bầu khí quyển chứa methane tạo màu xanh cyan đặc trưng.</p>
+        </article>
+      </section>
+
+      <!-- Neptune Modal -->
+      <section id="neptune-detail" class="planet-modal" role="dialog" aria-modal="true"
+        aria-labelledby="modal-neptune-name">
+        <a href="#solar-system" class="modal-overlay" aria-label="Đóng chi tiết Neptune"></a>
+        <article class="modal-content">
+          <a href="#solar-system" class="modal-close" aria-label="Đóng">✕</a>
+          <div class="modal-planet-sphere neptune-sphere"></div>
+          <h3 id="modal-neptune-name" class="modal-planet-name">Neptune</h3>
+          <p class="modal-planet-type">Hành tinh băng • Xa nhất hệ Mặt Trời</p>
+          <section class="modal-stats-grid" aria-label="Thông số kỹ thuật của Neptune">
+            <section class="modal-stat">
+              <span class="stat-value">49.528 km</span>
+              <span class="stat-label">Đường kính</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">4,495B km</span>
+              <span class="stat-label">Khoảng cách</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">60.190 ngày</span>
+              <span class="stat-label">Chu kỳ</span>
+            </section>
+            <section class="modal-stat">
+              <span class="stat-value">16</span>
+              <span class="stat-label">Vệ tinh</span>
+            </section>
+          </section>
+          <p class="modal-description">Neptune sở hữu gió mạnh nhất hệ Mặt Trời — lên tới 2.100 km/h. Hành tinh xa nhất
+            này mất 165 năm Trái Đất để hoàn thành một vòng quỹ đạo quanh Mặt Trời.</p>
+        </article>
+      </section>
+
+    </section>
+
+  </main>
+
+  <!-- ============================================
+       FOOTER (Semantic HTML5 <footer>)
+       ============================================ -->
+  <footer class="main-footer">
+    <section class="footer-content">
+      <section class="footer-brand">
+        <span class="footer-logo">✦ COSMOS</span>
+        <p class="footer-tagline">Khám phá vũ trụ bao la</p>
+      </section>
+      <nav class="footer-nav" aria-label="Điều hướng chân trang">
+        <a href="#home">Home</a>
+        <a href="#solar-system">Solar System</a>
+        <a href="#sun-showcase">Mặt Trời</a>
+        <a href="#planets">Planets</a>
+        <a href="#comparison">So Sánh</a>
+        <a href="#spotlight">Spotlight</a>
+        <a href="#moon-phases">Mặt Trăng</a>
+        <a href="#missions">Sứ Mệnh</a>
+        <a href="#facts">Space Facts</a>
+      </nav>
+      <section class="footer-bottom">
+        <p>&copy; 2026 COSMOS. All Rights Reserved.</p>
+        <p>Designed with ❤️ by Nguyen Nhu Y — Mã SV: 125001303</p>
+      </section>
+    </section>
+  </footer>
+
+  <!-- AOS Initialization -->
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>AOS.init({ duration: 1000, once: true, easing: 'ease-out-cubic' });</script>
+
+</body>
+
+</html>
