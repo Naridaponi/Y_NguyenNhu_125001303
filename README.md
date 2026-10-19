@@ -66,3 +66,8 @@
 >Chuyển cảnh mượt mà: Sau ~2.4s, toàn bộ màn hình giới thiệu sẽ tự động hòa tan (introFadeOut) và ẩn hoàn toàn (visibility: hidden; pointer-events: none;) để mở ra trang chính.
 - **Nhận xét & Tinh chỉnh của SV: AI đã hoàn thành tốt, vượt mong đợi**
   
+## 3. Đánh giá cá nhân về quá trình Vibe Coding
+- AI đã giúp bạn tiết kiệm thời gian ở phần nào nhất?
+> AI giúp tôi tiết kiệm thời gian code từng dòng, có thể giải quyết nhiều tác vụ trong vài phút
+- Bài học rút ra khi đặt câu hỏi (Prompt) cho AI trong thiết kế web?
+> Lưu ý xem còn bao nhiêu tokens, hết tokens là các dòng code + web bị lỗi khi đang chạy prompt, Đặt prompt đầy đủ nội dung yêu cầu, không chỉnh sửa 1 prompt liên tục
